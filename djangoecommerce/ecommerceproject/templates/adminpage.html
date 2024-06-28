@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+        <div class="mx_auto">
+            <div class="col-12 col-sm-12 col-md-12  col-lg-4 ">
+                <a href="{% url 'shop:add_product' %}" class="btn btn-secondary btn-block my_custom_button">Add Products</a>
+                <a href="{% url 'shop:all_product' %}" class="btn btn-secondary btn-block my_custom_button">Manage products</a>
+
+                <a href="{% url 'shop:viewuser' %}" class="btn btn-secondary btn-block my_custom_button">View Customer</a>
+                <a href="" class="btn btn-secondary btn-block my_custom_button">Manage orders</a>
+             </div>
+        </div>
+
+</div>
+</body>
+</html>
+{% endblock %}

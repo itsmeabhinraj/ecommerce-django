@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1>Your Orders</h1>
+    {% if orders %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Products</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>
+                            <ul>
+                                {% for item in order.orderitem_set.all %}
+                                    <li>{{ item.product.name }} (Qty: {{ item.quantity }})</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>${{ order.total }}</td>
+                        <td>{{ order.get_status_display }}</td>
+                        <td>{{ order.created_at }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no orders.</p>
+    {% endif %}
+</div>
+{% endblock %}

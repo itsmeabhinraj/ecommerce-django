@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="text-center">
+    <h1>Order Processed</h1>
+    <p>Your order has been processed and will be delivered in 5 days.</p>
+    <a href="{% url 'shop:product_list' %}" class="btn btn-primary">Continue Shopping</a>
+</div>
+{% endblock %}

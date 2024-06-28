@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+    <div class="row my_row_class">
+        <div class="mx-auto">
+<!--        <p>our product collections</p>-->
+        </div>
+    </div>
+</div>
+<div class="mx-auto">
+    <div>
+        <img class="my_image my_image_padding" src="{% static 'img/banner.png' %}" alt="our products" width="1300px" height="400px">
+    </div>
+<br>
+<div>
+    <h1 class="text-center my_title">Our products collections</h1>
+
+
+</div>
+<!--     temp add product buttn-->
+
+                               <!--PRODUCT DISPLAY-->
+<!--col-9 col-sm-12 col-md-4 col-lg-4-->
+<div class="container">
+    <div class="row mx_auto">
+        {% for product in products %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-3">
+           <div class="card text-center product-card" style="min-width:15rem;">
+
+               <a href="{% url 'shop:product_detailed' product.id %}"><img class="card-img-top product_image" src="{{product.img.url}}" alt="{{product.name}}" width="75" height="300"></a>
+            <div class="card-body">
+                <h4>{{product.name}}</h4>
+                <p>{{ product.price }}</p>
+<!--                <a class="btn btn-secondary" href="">Add to cart</a>-->
+
+            </div>
+
+            </div>
+
+        </div>
+
+         {% endfor %}
+
+
+
+
+    </div>
+
+</div>
+{% endblock %}
+
+

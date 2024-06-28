@@ -1,0 +1,45 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="{% url 'shop:product_list' %}"><img src="{% static 'img/logo.png' %}" alt="logimage" width="100" height="100"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems" style="max-height: 0px;" >
+
+                    <li><a href="{% url 'shop:product_list' %}" class="no-underline">Home</a></li>
+<!--                    <li><a href="{% url 'shop:product_list' %}" class="no-underline">Products</a></li>-->
+<!--                    <li><a href="" class="no-underline">About</a></li>-->
+<!--                    <li><a href="" class="no-underline">Contact</a></li>-->
+                    {% if request.user.is_staff %}
+                    <li><a href="{% url 'shop:adminpage' %}" class="no-underline">Hello <b>{{user.username}}</a></li>
+                    {% else %}
+                    <li><a href="{% url 'shop:product_list' %}" class="no-underline">Hello <b>{{user.username}}</b></a></li>
+                    {% endif %}
+                    <li><a href="" class="no-underline">Orders</a></li>
+
+                    <li><a href="{% url 'customer:logout' %}" class="no-underline">Logout</a></li>
+
+                </ul>
+            </nav>
+            <a href="{% url 'customer:cart_detail' %}"><img src="{% static 'img/cart.png' %}" width="30px" height="30px"></a>
+            <img src="{% static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+</body></html>
